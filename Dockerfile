@@ -10,7 +10,7 @@ WORKDIR /app/
 RUN addgroup -S nomad-var-dirsync && adduser -S nomad-var-dirsync -G nomad-var-dirsync
 
 # Copy binary in
-COPY ./dist/nomad-var-dirsync-TARGETOS-TARGETARCH ./nomad-var-dirsync
+COPY ./dist/nomad-var-dirsync-${TARGETOS}-${TARGETARCH} ./nomad-var-dirsync
 
 # Drop to non-root user
 USER nomad-var-dirsync
