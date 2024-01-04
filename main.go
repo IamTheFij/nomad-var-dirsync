@@ -45,6 +45,8 @@ func writeDir(client *nomad_api.Client, root string, sourceDir string) error {
 		sanitizedPath := invalidPathChars.ReplaceAllString(path, "_")
 		sanitizedPath = filepath.Join(root, sanitizedPath)
 
+		log.Printf("[INFO] Writing variable %s", sanitizedPath)
+
 		newVar := nomad_api.Variable{
 			Path: sanitizedPath,
 			Items: map[string]string{
@@ -76,11 +78,11 @@ func readDir(client *nomad_api.Client, root string, targetDir string, newDirPerm
 	}
 
 	for _, varInfo := range vars {
-		log.Printf("Reading variable %s", varInfo.Path)
+		log.Printf("[INFO] Reading variable %s", varInfo.Path)
 
 		fileVar, _, err := client.Variables().Read(varInfo.Path, &nomad_api.QueryOptions{})
 		if err != nil {
-			log.Printf("Failed reading variable %s: %v", varInfo.Path, err)
+			log.Printf("[ERROR] Failed reading variable %s: %v", varInfo.Path, err)
 		}
 
 		filePath := filepath.Join(targetDir, fileVar.Items["path"])
@@ -125,35 +127,35 @@ func main() {
 	target := flag.Arg(1)
 
 	if *root == "" {
-		log.Fatal("Must provide a nomad variable root -root-var")
+		log.Fatal("[ERROR] Must provide a nomad variable root -root-var")
 	}
 
 	targetStat, err := os.Stat(target)
 	if err != nil {
-		log.Fatalf("Failed reading target file `%s`. %v", target, err)
+		log.Fatalf("[ERROR] Failed reading target file `%s`. %v", target, err)
 	}
 
 	if !targetStat.IsDir() {
-		log.Fatalf("must provide a path to a directory: %s", target)
+		log.Fatalf("[ERROR] Must provide a path to a directory: %s", target)
 	}
 
 	client, err := nomad_api.NewClient(&nomad_api.Config{
 		SecretID: os.Getenv("NOMAD_TOKEN"),
 	})
 	if err != nil {
-		log.Fatalf("failed creating nomad client: %v", err)
+		log.Fatalf("[ERROR] Failed creating nomad client: %v", err)
 	}
 
 	switch action {
 	case "write":
 		if err = writeDir(client, *root, target); err != nil {
-			log.Fatalf("Failed writing directory: %v", err)
+			log.Fatalf("[ERROR] Failed writing directory: %v", err)
 		}
 	case "read":
 		if err = readDir(client, *root, target, *newDirPerms); err != nil {
-			log.Fatalf("Failed reading to files for path %v", err)
+			log.Fatalf("[ERROR] Failed reading to files for path %v", err)
 		}
 	default:
-		log.Fatalf("Expected action read or write, found %s", action)
+		log.Fatalf("[ERROR] Expected action read or write, found %s", action)
 	}
 }
