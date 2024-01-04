@@ -63,7 +63,7 @@ steps:
   - name: push images
     image: thegeeklab/drone-docker-buildx
     settings:
-      repo: ${REPO_OWNER}/${REPO_NAME}
+      repo: iamthefij/nomad-var-dirsync
       auto_tag: true
       platforms:
         - linux/amd64
