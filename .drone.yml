@@ -25,7 +25,7 @@ trigger:
     - push
     - tag
   refs:
-    - refs/heads/master
+    - refs/heads/main
     - refs/tags/v*
 
 steps:
