@@ -1,6 +1,3 @@
-ARG TARGETOS
-ARG TARGETARCH
-
 FROM alpine:3.19
 
 RUN mkdir /app
@@ -10,7 +7,9 @@ WORKDIR /app/
 RUN addgroup -S nomad-var-dirsync && adduser -S nomad-var-dirsync -G nomad-var-dirsync
 
 # Copy binary in
-COPY ./dist/nomad-var-dirsync-${TARGETOS}-${TARGETARCH} ./nomad-var-dirsync
+ARG TARGETOS
+ARG TARGETARCH
+COPY ./dist/nomad-var-dirsync-$TARGETOS-$TARGETARCH /bin/nomad-var-dirsync
 
 # Drop to non-root user
 USER nomad-var-dirsync
