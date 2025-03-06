@@ -97,7 +97,7 @@ func readDir(client *nomad_api.Client, root string, targetDir string, newDirPerm
 		parentDir := filepath.Dir(filePath)
 		if _, err := os.Stat(parentDir); err != nil {
 			if err = os.MkdirAll(parentDir, fs.FileMode(newDirPerms)); err != nil {
-				return fmt.Errorf("error creating paretn dir for file at path %s: %w", filePath, err)
+				return fmt.Errorf("error creating parent dir for file at path %s: %w", filePath, err)
 			}
 		}
 
