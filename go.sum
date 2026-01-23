@@ -26,6 +26,8 @@ github.com/hashicorp/nomad/api v0.0.0-20231213195942-64e3dca9274b h1:R1UDhkwGltp
 github.com/hashicorp/nomad/api v0.0.0-20231213195942-64e3dca9274b/go.mod h1:ijDwa6o1uG1jFSq6kERiX2PamKGpZzTmo0XOFNeFZgw=
 github.com/hashicorp/nomad/api v0.0.0-20251231081530-6d30ed5c7902 h1:eFHzFeVLYPRlC8a7kra2T9+Ev03YSjx1kNbEX5H7eko=
 github.com/hashicorp/nomad/api v0.0.0-20251231081530-6d30ed5c7902/go.mod h1:sldFTIgs+FsUeKU3LwVjviAIuksxD8TzDOn02MYwslE=
+github.com/hashicorp/nomad/api v0.0.0-20260122213042-fb618baaf2e7 h1:VvH1Ovy7EFCPP7gsv3rg7bXaWr6LucFFsEU3bvysKzw=
+github.com/hashicorp/nomad/api v0.0.0-20260122213042-fb618baaf2e7/go.mod h1:sldFTIgs+FsUeKU3LwVjviAIuksxD8TzDOn02MYwslE=
 github.com/mitchellh/go-homedir v1.1.0 h1:lukF9ziXFxDFPkA1vsr5zpc1XuPDn/wFntq5mG+4E0Y=
 github.com/mitchellh/go-homedir v1.1.0/go.mod h1:SfyaCUpYCn1Vlf4IUYiD9fPX4A5wJrkLzIz1N1q0pr0=
 github.com/mitchellh/go-testing-interface v1.14.1 h1:jrgshOhYAUVNMAJiKbEu7EqAwgJJ2JqpQmpLJOu07cU=

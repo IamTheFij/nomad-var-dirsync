@@ -2,7 +2,7 @@ module git.iamthefij.com/iamthefij/nomad-var-dirsync
 
 go 1.21
 
-require github.com/hashicorp/nomad/api v0.0.0-20251231081530-6d30ed5c7902
+require github.com/hashicorp/nomad/api v0.0.0-20260122213042-fb618baaf2e7
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
